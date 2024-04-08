@@ -19,3 +19,4 @@ void loop(){
   }
 previousButtonState = buttonState;
 }
+//this loop controls our Servo that we tested yesterday!
