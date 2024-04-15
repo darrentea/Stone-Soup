@@ -1,8 +1,12 @@
+#include <Servo.h>
+
+Servo myservo1;
 const int  buttonPin = 2;
 int buttonState = 0;
 int previousButtonstate = 0;
 
 void setup() {
+  myservo1.attach(9)
   pinMode(buttonPin, INTPUT);
   Serial.begin(9600);
 }
@@ -12,9 +16,9 @@ void loop(){
   
   if(buttonState != previousButtonState){
     if(buttonState == HIGH);
-      Serial.println("button pressed");
+      myservo1.write(180);
     } else {
-      Serial.println("button released");
+      myservo1.write(0);
     }
   }
 previousButtonState = buttonState;
