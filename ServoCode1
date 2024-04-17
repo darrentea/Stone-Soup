@@ -45,7 +45,7 @@ void setup() {
   myservo1.attach(9);   //Village
   myservo2.attach(10);  //Girl
   myservo3.attach(11);  //Crowd
-  myservo4.attach(11);  //Pot
+  myservo4.attach(12);  //Pot
 
   Serial.begin(9600);
 }
@@ -55,7 +55,7 @@ void loop() {
 
   if (buttonState1 != previousButtonState1) {
     if (buttonState1 == HIGH) {
-      myservo1.write(180);
+      myservo1.write(90); //issues? change angle number 
     } else {
       myservo1.write(0);
     }
@@ -67,7 +67,7 @@ void loop() {
 
   if (buttonState2 != previousButtonState2) {
     if (buttonState2 == HIGH) {
-      myservo2.write(180);
+      myservo2.write(0);
     } else {
       myservo2.write(90);
     }
