@@ -5,31 +5,31 @@ Servo myservo2;
 Servo myservo3;
 Servo myservo4;
 
-const int buttonPin1 = 2; //Backpack
+const int buttonPin1 = 2;  //Backpack
 int buttonState1 = 0;
 int previousButtonState1 = 0;
 
-const int buttonPin2 = 3; //Stone
+const int buttonPin2 = 3;  //Stone
 int buttonState2 = 0;
 int previousButtonState2 = 0;
 
-const int buttonPin3 = 4; //Carrot
+const int buttonPin3 = 4;  //Carrot
 int buttonState3 = 0;
 int previousButtonState3 = 0;
 
-const int buttonPin4 = 5; //Mushroom
+const int buttonPin4 = 5;  //Mushroom
 int buttonState4 = 0;
 int previousButtonState4 = 0;
 
-const int buttonPin5 = 6; //Potato
+const int buttonPin5 = 6;  //Potato
 int buttonState5 = 0;
 int previousButtonState5 = 0;
 
-const int buttonPin6 = 7; //Onion
+const int buttonPin6 = 7;  //Onion
 int buttonState6 = 0;
 int previousButtonState6 = 0;
 
-const int buttonPin7 = 8; //Ladle
+const int buttonPin7 = 8;  //Ladle
 int buttonState7 = 0;
 int previousButtonState7 = 0;
 
@@ -42,81 +42,85 @@ void setup() {
   pinMode(buttonPin6, INPUT);
   pinMode(buttonPin7, INPUT);
 
-  myservo1.attach(9); //Village
-  myservo2.attach(10); //Girl
-  myservo3.attach(11); //Crowd
-  myservo4.attach(11); //Pot
+  myservo1.attach(9);   //Village
+  myservo2.attach(10);  //Girl
+  myservo3.attach(11);  //Crowd
+  myservo4.attach(11);  //Pot
 
   Serial.begin(9600);
 }
 
 void loop() {
-  buttonState1 = digitalRead(buttonPin1); //Village
+  buttonState1 = digitalRead(buttonPin1);  //Village
 
   if (buttonState1 != previousButtonState1) {
-    if (buttonState1 == HIGH)
-      ;
-    myservo1.write(180);
-  } else {
-    myservo1.write(0);
+    if (buttonState1 == HIGH) {
+      myservo1.write(180);
+    } else {
+      myservo1.write(0);
+    }
   }
 
   previousButtonState1 = buttonState1;
 
-  buttonState2 = digitalRead(buttonPin2); //Girl
+  buttonState2 = digitalRead(buttonPin2);  //Girl
 
   if (buttonState2 != previousButtonState2) {
-    if (buttonState2 == HIGH)
-      ;
-    myservo2.write(180);
-  } else {
-    myservo2.write(90);
+    if (buttonState2 == HIGH) {
+      myservo2.write(180);
+    } else {
+      myservo2.write(90);
+    }
   }
 
   previousButtonState2 = buttonState2;
 
-  buttonState3 = digitalRead(buttonPin3); //Crowd
+  buttonState3 = digitalRead(buttonPin3);  //Crowd
   buttonState7 = digitalRead(buttonPin7);
 
   if (buttonState3 != previousButtonState3) {
-    if (buttonState3 == HIGH)
-      ;
-    myservo3.write(180);
-    if (buttonState7 != previousButtonState7) {
-      if (buttonState7 == HIGH)
-        ;
-      myservo3.write(0);
+    if (buttonState3 == HIGH) {
+      myservo3.write(180);
     } else {
       myservo3.write(90);
     }
-
-    previousButtonState4 = buttonState4;
-    previousButtonState7 = buttonState7;
   }
 
-  buttonState4 = digitalRead(buttonPin4); //Pot
+  if (buttonState7 != previousButtonState7) {
+    if (buttonState7 == HIGH) {
+      myservo3.write(0);
+    }
+  }
+
+  previousButtonState4 = buttonState4;
+  previousButtonState7 = buttonState7;
+
+  buttonState4 = digitalRead(buttonPin4);  //Pot
   buttonState5 = digitalRead(buttonPin5);
   buttonState6 = digitalRead(buttonPin6);
 
   if (buttonState4 != previousButtonState4) {
-    if (buttonState4 == HIGH)
-      ;
-    myservo4.write(130);
-    if (buttonState5 != previousButtonState5) {
-      if (buttonState5 == HIGH)
-        ;
-      myservo4.write(100);
-      if (buttonState6 != previousButtonState6) {
-        if (buttonState6 == HIGH)
-          ;
-        myservo4.write(70);
-      } else {
-        myservo4.write(180);
-      }
-
-      previousButtonState4 = buttonState4;
-      previousButtonState5 = buttonState5;
-      previousButtonState6 = buttonState6;
+    if (buttonState4 == HIGH) {
+      myservo4.write(130);
+    } else {
+      myservo4.write(180);
     }
   }
+
+  if (buttonState5 != previousButtonState5) {
+    if (buttonState5 == HIGH) {
+      myservo4.write(100);
+    }
+  }
+
+
+  if (buttonState6 != previousButtonState6) {
+    if (buttonState6 == HIGH) {
+      myservo4.write(70);
+    }
+  }
+
+  previousButtonState4 = buttonState4;
+  previousButtonState5 = buttonState5;
+  previousButtonState6 = buttonState6;
 }
