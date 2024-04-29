@@ -1,9 +1,9 @@
 #include <Servo.h>
 
-Servo myservo1;
-Servo myservo2;
-Servo myservo3;
-Servo myservo4;
+Servo myservo1; //Village
+Servo myservo2; //Girl
+Servo myservo3; //Crowd
+Servo myservo4; //Pot
 
 const int buttonPin1 = 2;  //Backpack
 int buttonState1 = 0;
@@ -53,15 +53,15 @@ void setup() {
 void loop() {
   buttonState1 = digitalRead(buttonPin1);  //Village
 
-  if (buttonState1 != previousButtonState1) {
+  if (buttonState1 != previousButtonState1) { //When button activated, turn servo
     if (buttonState1 == HIGH) {
-      myservo1.write(90); //issues? change angle number 
+      myservo1.write(90); 
     } else {
       myservo1.write(0);
     }
   }
 
-  previousButtonState1 = buttonState1;
+  previousButtonState1 = buttonState1; //Reset the toggle detector
 
   buttonState2 = digitalRead(buttonPin2);  //Girl
 
@@ -124,3 +124,4 @@ void loop() {
   previousButtonState5 = buttonState5;
   previousButtonState6 = buttonState6;
 }
+
